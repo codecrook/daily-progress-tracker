@@ -31,7 +31,14 @@ const ProgressSection = styled.div`
 `;
 
 const ProgressBar = styled.div`
-    background-color: red;
+    background-color: ${({ progress }) => {
+        const numericProgress = +progress.slice(0, -1);
+
+        if (numericProgress >= 80) return 'Lime';
+        else if (numericProgress >= 60) return 'PaleGoldenrod';
+        else if (numericProgress >= 40) return 'LightSalmon';
+        else return 'Crimson';
+    }};
     height: 50px;
     width: ${({ progress }) => progress || '0%'}
 `;
