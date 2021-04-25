@@ -17,7 +17,7 @@ const StyledSection = styled.div`
 const WeekdayTitle = styled.div`
     display: flex;
     justify-content: center;
-    width: 50px;
+    min-width: 50px;
     border-right: solid 3px lightgrey;
 `;
 
@@ -26,7 +26,17 @@ const WeekendTitle = styled(WeekdayTitle)`
     border-radius: 7px 0 0 7px;
 `;
 
-export const Section = ({ text }) => {
+const ProgressSection = styled.div`
+    width: 250px;
+`;
+
+const ProgressBar = styled.div`
+    background-color: red;
+    height: 50px;
+    width: ${({ progress }) => progress || '0%'}
+`;
+
+export const Section = ({ text, progress }) => {
 
     const isWeekend = text === 'S';
     return (
@@ -36,6 +46,9 @@ export const Section = ({ text }) => {
                     <WeekendTitle>{text}</WeekendTitle> :
                     <WeekdayTitle>{text}</WeekdayTitle>
             }
+            <ProgressSection>
+                <ProgressBar progress={progress} />
+            </ProgressSection>
         </StyledSection>
     )
 }

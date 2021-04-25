@@ -11,13 +11,13 @@ function App() {
     <>
       <Title>Daily Progress Tracker</Title>
       <div>
-        <Section text="M" />
-        <Section text="T" />
-        <Section text="W" />
-        <Section text="T" />
-        <Section text="F" />
-        <Section text="S" />
-        <Section text="S" />
+        <Section text="M" progress="100%" />
+        <Section text="T" progress="80%" />
+        <Section text="W" progress="70%" />
+        <Section text="T" progress="60%" />
+        <Section text="F" progress="50%" />
+        <Section text="S" progress="40%" />
+        <Section text="S" progress="30%" />
       </div>
     </>
   );
