@@ -43,9 +43,15 @@ const ProgressBar = styled.div`
     width: ${({ progress }) => progress || '0%'}
 `;
 
-export const Section = ({ text, progress }) => {
+const TodayProgressBar = styled(ProgressBar)`
+    background-color: Teal;
+`;
+
+export const Section = ({ text, progress, day }) => {
 
     const isWeekend = text === 'S';
+    const isToday = new Date().getDay() === day;
+
     return (
         <StyledSection>
             {
@@ -53,8 +59,13 @@ export const Section = ({ text, progress }) => {
                     <WeekendTitle>{text}</WeekendTitle> :
                     <WeekdayTitle>{text}</WeekdayTitle>
             }
+
             <ProgressSection>
-                <ProgressBar progress={progress} />
+                {
+                    isToday ?
+                        <TodayProgressBar progress={progress} /> :
+                        <ProgressBar progress={progress} />
+                }
             </ProgressSection>
         </StyledSection>
     )
